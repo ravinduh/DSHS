@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Requirement
+ *
+ * @ORM\Table(name="requirement")
+ * @ORM\Entity
+ */
+class Requirement
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="details", type="string", length=1000, nullable=false)
+     */
+    private $details;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

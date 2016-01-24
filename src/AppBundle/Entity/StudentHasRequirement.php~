@@ -1,0 +1,63 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StudentHasRequirement
+ *
+ * @ORM\Table(name="student_has_requirement", indexes={@ORM\Index(name="requirement_id_idx", columns={"requirement_id"}), @ORM\Index(name="moderator_id_idx", columns={"moderator_id"}), @ORM\Index(name="student_id_idx", columns={"student_id"})})
+ * @ORM\Entity
+ */
+class StudentHasRequirement
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="donated_date", type="date", nullable=true)
+     */
+    private $donatedDate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     * })
+     */
+    private $student;
+
+    /**
+     * @var \AppBundle\Entity\Requirement
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Requirement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="requirement_id", referencedColumnName="id")
+     * })
+     */
+    private $requirement;
+
+    /**
+     * @var \AppBundle\Entity\Moderator
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Moderator")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="moderator_id", referencedColumnName="id")
+     * })
+     */
+    private $moderator;
+
+
+}
+
